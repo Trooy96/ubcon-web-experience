@@ -90,13 +90,13 @@ function Index() {
 
             <dl className="reveal mt-14 grid max-w-xl grid-cols-3 gap-6 border-t border-border pt-8">
               {[
-                { k: "Sectors served", v: 8, suffix: "+" },
-                { k: "OEM brands", v: 20, suffix: "+" },
-                { k: "Year founded", v: 2022, suffix: "" },
+                { k: "Sectors served", v: 8, suffix: "+", format: "locale" as const },
+                { k: "OEM brands", v: 20, suffix: "+", format: "locale" as const },
+                { k: "Year founded", v: 2022, suffix: "", format: "plain" as const },
               ].map((s) => (
                 <div key={s.k}>
                   <dd className="font-display text-3xl font-extrabold text-foreground">
-                    <span data-count-to={s.v}>0</span>
+                    <span data-count-to={s.v} data-count-format={s.format}>0</span>
                     {s.suffix}
                   </dd>
                   <dt className="mt-1 text-xs uppercase tracking-widest text-muted-foreground">{s.k}</dt>

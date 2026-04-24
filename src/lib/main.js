@@ -148,13 +148,15 @@ function setupCounters() {
       if (!entry.isIntersecting) return;
       const el = entry.target;
       const to = parseFloat(el.getAttribute("data-count-to") || "0");
+      const format = el.getAttribute("data-count-format") || "locale";
       const obj = { v: 0 };
       animate(obj, {
         v: to,
         duration: 1600,
         ease: "out(3)",
         onUpdate: () => {
-          el.textContent = Math.round(obj.v).toLocaleString();
+          const n = Math.round(obj.v);
+          el.textContent = format === "plain" ? String(n) : n.toLocaleString();
         },
       });
       io.unobserve(el);
