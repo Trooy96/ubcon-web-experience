@@ -5,7 +5,8 @@
    in route components.
    ============================================================= */
 
-import { animate, createDrawable, createTimeline, stagger, onScroll } from "animejs";
+import { animate, createTimeline, stagger, onScroll, svg } from "animejs";
+const { createDrawable } = svg;
 
 /** Reveal-on-scroll for any [data-reveal] / .reveal element. */
 function setupReveals() {
