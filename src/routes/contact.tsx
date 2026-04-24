@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone, Send } from "lucide-react";
 import { useState } from "react";
 import { AnimatedScene } from "@/components/AnimatedScene";
 import { SITE } from "@/lib/site";
@@ -18,13 +18,36 @@ export const Route = createFileRoute("/contact")({
 
 function Contact() {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", company: "", email: "", phone: "", message: "" });
+
+  function update<K extends keyof typeof form>(key: K, value: string) {
+    setForm((f) => ({ ...f, [key]: value }));
+  }
+
+  function buildWhatsAppMessage() {
+    const lines = [
+      `Hello UBCON, I'd like to make an enquiry.`,
+      ``,
+      form.name ? `Name: ${form.name}` : null,
+      form.company ? `Company: ${form.company}` : null,
+      form.email ? `Email: ${form.email}` : null,
+      form.phone ? `Phone: ${form.phone}` : null,
+      form.message ? `\nMessage:\n${form.message}` : null,
+    ].filter(Boolean);
+    return lines.join("\n");
+  }
+
+  function openWhatsApp() {
+    const text = encodeURIComponent(buildWhatsAppMessage());
+    const url = `https://wa.me/${SITE.whatsapp}?text=${text}`;
+    window.open(url, "_blank", "noopener,noreferrer");
+  }
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const subject = encodeURIComponent(`UBCON enquiry — ${data.get("name") || "Website"}`);
+    const subject = encodeURIComponent(`UBCON enquiry — ${form.name || "Website"}`);
     const body = encodeURIComponent(
-      `Name: ${data.get("name") || ""}\nCompany: ${data.get("company") || ""}\nEmail: ${data.get("email") || ""}\nPhone: ${data.get("phone") || ""}\n\nMessage:\n${data.get("message") || ""}`
+      `Name: ${form.name}\nCompany: ${form.company}\nEmail: ${form.email}\nPhone: ${form.phone}\n\nMessage:\n${form.message}`
     );
     window.location.href = `mailto:${SITE.email}?subject=${subject}&body=${body}`;
     setSent(true);
