@@ -4,6 +4,7 @@ import appCss from "../styles.css?url";
 import { ThemeProvider } from "@/lib/theme";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { WhatsAppFab } from "@/components/WhatsAppFab";
 
 function NotFoundComponent() {
   return (
@@ -27,6 +28,7 @@ function NotFoundComponent() {
         </div>
       </main>
       <SiteFooter />
+      <WhatsAppFab />
     </ThemeProvider>
   );
 }
@@ -85,6 +87,7 @@ function RootComponent() {
         <Outlet />
       </main>
       <SiteFooter />
+      <WhatsAppFab />
     </ThemeProvider>
   );
 }

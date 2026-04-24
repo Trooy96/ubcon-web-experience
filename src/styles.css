@@ -247,3 +247,17 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+
+/* Marquee for team carousel */
+@keyframes ubcon-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ubcon-marquee {
+  display: flex;
+  width: max-content;
+  animation: ubcon-marquee 45s linear infinite;
+}
+.ubcon-marquee-wrapper:hover .ubcon-marquee {
+  animation-play-state: paused;
+}
