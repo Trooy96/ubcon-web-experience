@@ -99,10 +99,10 @@ function Contact() {
 
           <form onSubmit={handleSubmit} className="reveal rounded-3xl border border-border bg-card p-6 sm:p-8 lg:col-span-3">
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field name="name" label="Full name" required />
-              <Field name="company" label="Company" />
-              <Field name="email" label="Email" type="email" required />
-              <Field name="phone" label="Phone" type="tel" />
+              <Field name="name" label="Full name" required value={form.name} onChange={(v) => update("name", v)} />
+              <Field name="company" label="Company" value={form.company} onChange={(v) => update("company", v)} />
+              <Field name="email" label="Email" type="email" required value={form.email} onChange={(v) => update("email", v)} />
+              <Field name="phone" label="Phone" type="tel" value={form.phone} onChange={(v) => update("phone", v)} />
             </div>
             <div className="mt-4">
               <label className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">Message</label>
@@ -110,18 +110,29 @@ function Contact() {
                 name="message"
                 required
                 rows={5}
+                value={form.message}
+                onChange={(e) => update("message", e.target.value)}
                 className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none ring-primary/40 focus:ring-2"
                 placeholder="Tell us what you need to source, supply or build…"
               />
             </div>
-            <button
-              type="submit"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-yellow transition-transform hover:-translate-y-0.5"
-            >
-              {sent ? "Opening your email…" : "Send enquiry"} <Send className="h-4 w-4" />
-            </button>
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <button
+                type="submit"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-yellow transition-transform hover:-translate-y-0.5"
+              >
+                {sent ? "Opening your email…" : "Send enquiry"} <Send className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                onClick={openWhatsApp}
+                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_10px_30px_-10px_rgba(37,211,102,0.6)] transition-transform hover:-translate-y-0.5"
+              >
+                Send via WhatsApp <MessageCircle className="h-4 w-4" />
+              </button>
+            </div>
             <p className="mt-3 text-xs text-muted-foreground">
-              Submitting opens your email client addressed to {SITE.email}.
+              Email opens your client addressed to {SITE.email}. WhatsApp opens a chat with {SITE.phone} pre-filled with your details.
             </p>
           </form>
         </div>
@@ -130,7 +141,21 @@ function Contact() {
   );
 }
 
-function Field({ name, label, type = "text", required }: { name: string; label: string; type?: string; required?: boolean }) {
+function Field({
+  name,
+  label,
+  type = "text",
+  required,
+  value,
+  onChange,
+}: {
+  name: string;
+  label: string;
+  type?: string;
+  required?: boolean;
+  value: string;
+  onChange: (v: string) => void;
+}) {
   return (
     <div>
       <label className="block text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">{label}{required && <span className="text-primary">*</span>}</label>
@@ -138,6 +163,8 @@ function Field({ name, label, type = "text", required }: { name: string; label: 
         name={name}
         type={type}
         required={required}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
         className="mt-2 w-full rounded-xl border border-border bg-background px-4 py-3 text-sm text-foreground outline-none ring-primary/40 focus:ring-2"
       />
     </div>
