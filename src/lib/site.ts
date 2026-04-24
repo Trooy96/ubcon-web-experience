@@ -1,4 +1,4 @@
-import logoImg from "@/assets/ubcon/logo.jpg";
+import logoImg from "@/assets/ubcon/logo.png";
 
 export const SITE = {
   name: "UBCON General Suppliers Limited",
@@ -6,6 +6,7 @@ export const SITE = {
   tagline: "Engineering, Mining, Energy & Logistics — supplied across sub-Saharan Africa.",
   email: "ubconsuppliers@gmail.com",
   phone: "+260 769 055 719",
+  whatsapp: "260769055719",
   address: "Lusaka, Zambia",
   founded: "9 March 2022 (PACRA)",
   logo: logoImg,

@@ -9,9 +9,11 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-md bg-primary font-display text-lg font-extrabold text-primary-foreground">
-              U
-            </span>
+            <img
+              src={SITE.logo}
+              alt="UBCON logo"
+              className="h-11 w-11 rounded-md object-contain bg-white p-0.5"
+            />
             <div>
               <div className="font-display text-base font-bold">UBCON</div>
               <div className="text-[11px] tracking-[0.22em] text-secondary-foreground/60">

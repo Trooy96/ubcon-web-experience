@@ -33,9 +33,11 @@ export function SiteHeader() {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2.5 group">
-          <span className="grid h-9 w-9 place-items-center rounded-md bg-primary text-primary-foreground font-display text-base font-extrabold shadow-yellow">
-            U
-          </span>
+          <img
+            src={SITE.logo}
+            alt="UBCON General Suppliers Limited logo"
+            className="h-10 w-10 rounded-md object-contain bg-white p-0.5 shadow-yellow"
+          />
           <span className="font-display text-sm font-bold leading-tight">
             <span className="block">{SITE.short}</span>
             <span className="block text-[10px] font-medium tracking-[0.2em] text-muted-foreground">
