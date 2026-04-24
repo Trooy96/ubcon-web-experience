@@ -47,6 +47,13 @@ export const Route = createRootRoute({
       { name: "author", content: "UBCON General Suppliers Limited" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "UBCON General Suppliers Limited — Engineering, Mining & Logistics in Africa" },
+      { name: "twitter:title", content: "UBCON General Suppliers Limited — Engineering, Mining & Logistics in Africa" },
+      { name: "description", content: "Kalyotex web" },
+      { property: "og:description", content: "Kalyotex web" },
+      { name: "twitter:description", content: "Kalyotex web" },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/485a1bcb-48bb-4b10-b7db-06c130cf32eb/id-preview-f68d8f31--4b25a049-d885-41ef-834f-67bad23c9d49.lovable.app-1777020534360.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/485a1bcb-48bb-4b10-b7db-06c130cf32eb/id-preview-f68d8f31--4b25a049-d885-41ef-834f-67bad23c9d49.lovable.app-1777020534360.png" },
     ],
     links: [
       {
