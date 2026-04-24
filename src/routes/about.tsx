@@ -3,6 +3,12 @@ import { AnimatedScene } from "@/components/AnimatedScene";
 import chellah from "@/assets/team/chellah.jpg";
 import kelvin from "@/assets/team/kelvin.jpg";
 import susi from "@/assets/team/susi.jpg";
+import engineer1 from "@/assets/team/engineer-1.jpg";
+import procurement from "@/assets/team/procurement.jpg";
+import logistics from "@/assets/team/logistics.jpg";
+import sales from "@/assets/team/sales.jpg";
+import electrical from "@/assets/team/electrical.jpg";
+import safety from "@/assets/team/safety.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -27,6 +33,12 @@ const TEAM = [
   { name: "Chellah Siame", role: "Director / C.E.O", img: chellah, bio: "Civil engineer and seasoned business professional. Founded UBCON after building global supplier relationships across China, Turkey, India, the Netherlands, Dubai and South Africa." },
   { name: "Kelvin Chompwe", role: "Chief Accountant", img: kelvin, bio: "Leads finance, governance and the operational reporting that keeps every UBCON project on budget." },
   { name: "Susi Chilambe", role: "Operations Manager", img: susi, bio: "Runs day-to-day delivery, supplier coordination and on-site logistics across UBCON's projects." },
+  { name: "Mwansa Tembo", role: "Mechanical Engineer", img: engineer1, bio: "Heads pump repairs, engine rebuilds and drifter testing in our modern, well-equipped workshop." },
+  { name: "Natasha Banda", role: "Procurement Lead", img: procurement, bio: "Manages our global supplier network across China, Turkey, India, Switzerland, the Netherlands, Dubai and South Africa." },
+  { name: "Joseph Mulenga", role: "Logistics Coordinator", img: logistics, bio: "Coordinates local and cross-border trips, fleet hire and on-time clearance of goods to client sites." },
+  { name: "Bupe Kapenda", role: "Sales & Client Success", img: sales, bio: "Owns client relationships across mining, energy, agriculture and health sectors and the quote-to-delivery cycle." },
+  { name: "Mainza Hamoonga", role: "Electrical Engineer", img: electrical, bio: "Leads CCTV installation, commissioning, testing and electrical scope across civil and structural projects." },
+  { name: "Lombe Phiri", role: "Safety & Compliance Officer", img: safety, bio: "Owns PPE standards, site safety and EIZ / NCC compliance across every UBCON deployment." },
 ];
 
 function About() {
@@ -82,23 +94,43 @@ function About() {
           <h2 className="reveal mt-3 max-w-3xl font-display text-4xl font-extrabold sm:text-5xl text-balance">
             People behind every UBCON delivery.
           </h2>
+          <p className="reveal mt-4 max-w-2xl text-sm text-muted-foreground">
+            A brilliant, multi-disciplinary team — engineers, accountants, procurement, logistics and safety
+            specialists — united by the same work ethics.
+          </p>
+        </div>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.map((m, i) => (
-              <article key={m.name} className="reveal group overflow-hidden rounded-3xl border border-border bg-card" style={{ transitionDelay: `${i * 80}ms` }}>
+        <div
+          className="ubcon-marquee-wrapper relative mt-14 overflow-hidden"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0, black 6%, black 94%, transparent 100%)",
+          }}
+        >
+          <div className="ubcon-marquee gap-6 px-4">
+            {[...TEAM, ...TEAM].map((m, i) => (
+              <article
+                key={`${m.name}-${i}`}
+                className="group w-[280px] shrink-0 overflow-hidden rounded-3xl border border-border bg-card sm:w-[320px]"
+              >
                 <div className="aspect-[4/5] overflow-hidden bg-muted">
                   <img
-                    data-src={m.img}
-                    src=""
+                    src={m.img}
                     alt={m.name}
                     loading="lazy"
+                    width={768}
+                    height={960}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
                   <div className="font-display text-xl font-bold">{m.name}</div>
                   <div className="text-xs uppercase tracking-[0.2em] text-primary">{m.role}</div>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{m.bio}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground line-clamp-3">
+                    {m.bio}
+                  </p>
                 </div>
               </article>
             ))}
